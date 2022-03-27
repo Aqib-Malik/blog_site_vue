@@ -54,6 +54,15 @@ const routes = [
       import("../views/search_blog.vue"),
       
   },
+  {
+    path: "/cat_blogs",
+    props:true,
+    name: "cat_blogs",
+    component: () =>
+      import("../views/cat_blogs.vue"),
+      
+  },
+  
   
   
   

@@ -1,25 +1,27 @@
 <template>
   <div class="main">
     <b-navbar toggleable="lg" type="dark" variant="info">
-      <b-navbar-brand href="#">Programming Blogs</b-navbar-brand>
+      <b-navbar-brand href="#" v-on:click="navto('wellcome')">Programming Blogs</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item v-on:click="navto('wellcome')">Blogs</b-nav-item>
+          <!-- <b-nav-item v-on:click="navToCat()">Python</b-nav-item> -->
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
           <b-nav-form>
             <b-form-input
+            v-if="isshow" 
               size="sm"
               class="mr-sm-2"
               placeholder="Search"
               v-model="searchData.textt"
             ></b-form-input>
-            <b-button size="sm" class="my-2 my-sm-0" v-on:click="navToCat()"
+            <b-button v-if="isshow" size="sm" class="my-2 my-sm-0" v-on:click="navToSearch()"
               >Search</b-button
             >
           </b-nav-form>
@@ -44,20 +46,48 @@
 <script>
 export default {
   name: "navbar",
+   props: {
+   artists: String
+ },
   data() {
     return {
+      isshow:true,
       name: localStorage.username,
       searchData: {
         textt: null,
       },
     };
   },
+  mounted(){
+    console.log("##########################")
+    console.log(this.artists)
+    console.log(this.isshow)
+    if(this.artists!=null){
+      this.isshow=false
+    }
+
+  },
   methods: {
-    navToCat() {
+    navToSearch() {
       if (this.searchData.textt != null) {
         console.log("next");
         this.$router.push({
           name: "search_blog",
+          params: { dat: this.searchData.textt },
+        });
+      } else {
+        this.$swal.fire({
+          icon: "warning",
+          title: "Empty...",
+          text: '"Search field shold not be empty!!"',
+        });
+      }
+    },
+    navToCat() {
+      if (this.searchData.textt != null) {
+        console.log("next");
+        this.$router.push({
+          name: "cat_blogs",
           params: { dat: this.searchData.textt },
         });
       } else {
@@ -79,9 +109,9 @@ export default {
         }
       );
       console.log(response);
-      return response.status
+      return response.status;
     },
-      logout() {
+    logout() {
       // Use sweetalert2
       // this.$swal('Hello Vue world!!!');
       this.$swal({
@@ -95,41 +125,33 @@ export default {
         showCloseButton: true,
         showLoaderOnConfirm: true,
       }).then((result) => {
-         if (result.value) {
-              
-            //       var response =  fetch(
-            //   "https://programmingblogs.herokuapp.com/api/logout/",
-            //   {
-            //     method: "post",
-            //     headers: {
-            //       Authorization: `Token ${localStorage.getItem("token")}`,
-            //     },
-            //   }
-            // );
-            this.logg().then((result) => {
-              if (result == 204) {
-                localStorage.removeItem("token");
+        if (result.value) {
+          //       var response =  fetch(
+          //   "https://programmingblogs.herokuapp.com/api/logout/",
+          //   {
+          //     method: "post",
+          //     headers: {
+          //       Authorization: `Token ${localStorage.getItem("token")}`,
+          //     },
+          //   }
+          // );
+          this.logg().then((result) => {
+            if (result == 204) {
+              localStorage.removeItem("token");
 
-                    this.$swal("Logout", "You successfully Logout", "success");
+              this.$swal("Logout", "You successfully Logout", "success");
 
-                    this.$router.push("/");
-
-              }
-              else{
-                // this.$swal("Not Logout", "some thing gonna wrong", "success",);
-                this.$swal.fire({
-          icon: "error",
-          title: "Not Logout",
-          text: '"some thing gonna wrong"',
-        });
-              }
-            
-            })
-      
-         
-         }
-          
-         else {
+              this.$router.replace("/");
+            } else {
+              // this.$swal("Not Logout", "some thing gonna wrong", "success",);
+              this.$swal.fire({
+                icon: "error",
+                title: "Not Logout",
+                text: '"some thing gonna wrong"',
+              });
+            }
+          });
+        } else {
           this.$swal("Cancelled", "You are still signin", "info");
         }
       });

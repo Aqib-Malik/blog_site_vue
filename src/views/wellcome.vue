@@ -35,20 +35,7 @@
               <a href="#" class="box_btn" v-on:click="navTo(item)">read more</a>
             </div>
           </div>
-          <!-- <div class="col-md-4">
-      <div class="card card-2">
-        <h3>UI Components</h3>
-        <p>Tabs, buttons, inputs, lists, cards, and more! A comprehensive library
-          of mobile UI components, ready to go.</p>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card card-3">
-        <h3>Theming</h3>
-        <p>Learn how to easily customize and modify your app’s design to fit your
-          brand across all mobile platform styles.</p>
-      </div>
-    </div> -->
+        
         </div>
       </div>
     </div>
@@ -82,10 +69,19 @@ export default {
       Vue.axios
         .get("https://programmingblogs.herokuapp.com/cat/post/")
         .then((res) => {
-          this.list = res.data;
-          console.log(this.list[1]["title"]);
-          this.isLoadShow = false;
-          console.log(this.list);
+          if(res.status==200){
+            this.list = res.data;
+            console.log(this.list[1]["title"]);
+            this.isLoadShow = false;
+            console.log(this.list);
+          }
+          else{
+            this.$swal.fire({
+          icon: "warning",
+          title: "error...",
+          text: '"Some thing gonna wrong!!"',
+        });
+          }
         });
     } else {
       this.isLoadShow = true;

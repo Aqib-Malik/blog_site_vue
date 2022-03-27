@@ -28,17 +28,7 @@ export default {
           
           this.$router.replace("/wellcome");
      }},3000)
-    //    if (localStorage.getItem('token') == null) {
-    //       console.log("nul====="+localStorage.token) 
-    //     this.$router.push("/login");
-    //   } else {
-    //       console.log("not nul====="+localStorage.token) 
-    //     this.$router.push("/blog_screen");
-    //   }
-//     console.log(localStorage.token);
-//     setTimeout(() => {
-      
-//     }, 3000);
+ 
   },
   methods: {
     navTo() {

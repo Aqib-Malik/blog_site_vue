@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navbar  artists='matt'/><br /><br />
+    <navbar /><br /><br />
     <div class="loader" v-if="isLoadShow">
       <center>
         <b-spinner style="width: 3rem; height: 3rem" type="grow"></b-spinner>
@@ -47,7 +47,7 @@ import axios from "axios";
 import VueAxios from "vue-axios";
 Vue.use(VueAxios, axios);
 export default {
-  name: "search_blog",
+  name: "cat_blogs",
   props: ["dat"],
   data() {
     return {
@@ -65,8 +65,8 @@ export default {
     this.dat;
     console.log(this.dat)
       this.isLoadShow = true;
-    Vue.axios.get(`https://programmingblogs.herokuapp.com/fp/?search=${this.dat}`).then((res) => {
-      this.list = res.data;
+    Vue.axios.get(`https://programmingblogs.herokuapp.com/cat/post/${this.dat}`).then((res) => {
+      this.list[0] = res.data;
       console.log(this.list[0]["title"]);
       this.isLoadShow = false;
       console.log(this.list);    });
