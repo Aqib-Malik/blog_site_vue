@@ -1,28 +1,17 @@
 <template>
-  <div>
-    <navbar />
+<div>
+  <navbar />
 
-    <br />
+    <div class="wrapp">
     <link
       href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
       rel="stylesheet"
     />
-    <div class="container mb80">
-      <div class="page-timeline">
-        <div class="vtimeline-point">
-          <div class="vtimeline-icon">
-            <i class="fa fa-image"></i>
-          </div>
-          <div class="vtimeline-block">
-            <span class="vtimeline-date">{{ data["date"] }}</span>
-            <div id="maincrd" class="vtimeline-content">
-              <div id="text-block">
-                <h4 id="text-block">{{ data["code"] }}</h4>
-              </div>
-              <a href="#"
-                ><h3>{{ data["title"] }}</h3></a
-              >
-              <ul class="post-meta list-inline">
+    <div class="box box-down blue">
+      <h2>{{ data["title"] }}</h2>
+      <p id="text-block">{{ data["code"] }}</p>
+      <br>
+      <ul class="post-meta list-inline">
                 <li class="list-inline-item">
                   <i class="fa fa-user-circle-o"></i>
                   <a href="#">{{ data["user"]["username"] }}</a>
@@ -36,16 +25,13 @@
                   <a href="#">{{ data["category"]["title"] }}</a>
                 </li>
               </ul>
-              <p>
-                {{ data["content"] }}
-              </p>
-              <br />
-              <!-- <a href="#" class="btn btn-outline-secondary btn-sm">Read More</a> -->
-            </div>
-          </div>
-        </div>
-      </div>
+      <img src="https://assets.codepen.io/2301174/icon-calculator.svg" alt="" />
     </div>
+    <div class="desciption">
+    <p >{{ data["content"] }}</p>
+    </div>
+</div>
+
   </div>
 </template>
 <script>
@@ -85,7 +71,7 @@ Timeline
   right: auto;
   height: 100%;
   width: 3px;
-  background: #17A2B8;
+  background: #17a2b8;
   z-index: 0;
 
   -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2),
@@ -98,9 +84,9 @@ Timeline
   content: "";
   width: 3px;
   height: 40px;
-  background: #17A2B8;
-  background: -webkit-linear-gradient(top, #17A2B8, rgba(52, 152, 219, 0));
-  background: linear-gradient(to bottom, #17A2B8, rgba(52, 152, 219, 0));
+  background: #17a2b8;
+  background: -webkit-linear-gradient(top, #17a2b8, rgba(52, 152, 219, 0));
+  background: linear-gradient(to bottom, #17a2b8, rgba(52, 152, 219, 0));
   top: 100%;
   left: 303px;
 
@@ -146,7 +132,7 @@ Timeline
   color: #fff;
   width: 50px;
   height: 50px;
-  background: #17A2B8;
+  background: #17a2b8;
   border-radius: 50%;
   float: left;
   text-align: center;
@@ -197,5 +183,128 @@ h3 {
 }
 #maincrd {
   background-color: rgb(235, 245, 245);
+}
+
+:root {
+  --red: hsl(0, 78%, 62%);
+  --cyan: hsl(180, 62%, 55%);
+  --orange: hsl(34, 97%, 64%);
+  --blue: hsl(212, 86%, 64%);
+  --varyDarkBlue: hsl(234, 12%, 34%);
+  --grayishBlue: hsl(229, 6%, 66%);
+  --veryLightGray: hsl(0, 0%, 98%);
+  --weight1: 200;
+  --weight2: 400;
+  --weight3: 600;
+}
+
+body {
+  font-size: 15px;
+  font-family: "Poppins", sans-serif;
+  background-color: var(--veryLightGray);
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+h1:first-of-type {
+  font-weight: var(--weight1);
+  color: var(--varyDarkBlue);
+}
+
+h1:last-of-type {
+  color: var(--varyDarkBlue);
+}
+
+@media (max-width: 400px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+
+.header {
+  text-align: center;
+  line-height: 0.8;
+  margin-bottom: 50px;
+  margin-top: 100px;
+}
+
+.header p {
+  margin: 0 auto;
+  line-height: 2;
+  color: var(--grayishBlue);
+}
+
+.box p {
+  color: var(--grayishBlue);
+}
+
+.box {
+  border-radius: 5px;
+  box-shadow: 0px 30px 40px -20px var(--grayishBlue);
+  padding: 30px;
+  margin: 20px;
+  background-color: #ecfafd;
+  margin: 60px;
+  /* padding: 60px; */
+  
+}
+
+img {
+  float: right;
+}
+
+@media (max-width: 450px) {
+  .box {
+    text-align: center;
+    margin: 10px;
+    /* height: 200px; */
+  }
+}
+
+@media (max-width: 1200px) and (min-width: 450px) {
+  .box {
+    text-align: center;
+    /* height: 180px; */
+  }
+}
+
+.cyan {
+  border-top: 3px solid var(--cyan);
+}
+.red {
+  border-top: 3px solid var(--red);
+}
+.blue {
+  border-top: 3px solid var(--blue);
+}
+.orange {
+  border-top: 3px solid var(--orange);
+}
+
+h2 {
+  color: var(--varyDarkBlue);
+  font-weight: var(--weight3);
+}
+#cattit{
+  align-self: start;
+  text-decoration: none;
+  background-color: #17A2B8;
+  color: white;
+  padding: 10px;
+  left: 0;
+  position: relative;
+  left: 0;
+   top: 0;
+    z-index: 9;
+}
+
+.desciption{
+  padding-inline: 70px;
 }
 </style>
