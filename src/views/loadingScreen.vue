@@ -58,8 +58,8 @@ h1 {
   padding: 0;
   font-family: ‘Arial Narrow’, sans-serif;
   font-weight: 100;
-  font-size: 1.1em;
-  color: #17A2B8;
+  font-size: 2em;
+  color: #c0ecf3;
 }
 
 span {

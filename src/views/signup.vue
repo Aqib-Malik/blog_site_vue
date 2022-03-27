@@ -157,7 +157,7 @@ export default {
               this.userData
             )
             .then((response) => {
-              console.log(res.status)
+              console.log(response.status)
               //   alert(response.data.id);
               if (response.status == 200) {
                 // alert("Account created Sussefully", "Created", success)

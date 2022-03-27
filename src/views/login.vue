@@ -115,8 +115,9 @@ export default {
             )
             .then((response) => {
               //   alert(response.data.id);
-              console.warn(response.data);
-              console.warn(response.status);
+              // console.log(response.data);
+              console.log("$$$$$$$$$$$$$$");
+              console.log(response.status);
               if (response.status == 200) {
                 localStorage.token = response.data.token;
                 localStorage.userId = response.data.user.id;
