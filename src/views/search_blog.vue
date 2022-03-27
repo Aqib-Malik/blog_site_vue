@@ -66,10 +66,22 @@ export default {
     console.log(this.dat)
       this.isLoadShow = true;
     Vue.axios.get(`https://programmingblogs.herokuapp.com/fp/?search=${this.dat}`).then((res) => {
-      this.list = res.data;
-      console.log(this.list[0]["title"]);
-      this.isLoadShow = false;
-      console.log(this.list);    });
+       console.log( res.data.length);
+       if(res.data.length!=0){
+        this.list = res.data;
+        // console.log(this.list[0]["title"]);
+        this.isLoadShow = false;
+        // console.log(this.list);    
+      }
+      else{
+        this.$swal.fire({
+          icon: "warning",
+          title: "No Data Fount.",
+        }).then(()=>{
+          this.$router.replace("/wellcome");
+        });
+      }
+      });
     
   },
   methods: {
