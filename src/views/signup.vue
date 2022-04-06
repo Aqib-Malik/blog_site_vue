@@ -83,59 +83,12 @@ export default {
         image:
           "https://images.pexels.com/photos/6804595/pexels-photo-6804595.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       },
-      cat: {
-        title: "45ert",
-      },
-      signUp: {
-        username: null,
-        email: null,
-        hobbies: [],
-        gender: null,
-      },
-      form: {
-        email: "",
-        name: "",
-        food: null,
-        checked: [],
-      },
-      foods: [
-        { text: "Select One", value: null },
-        "Carrots",
-        "Beans",
-        "Tomatoes",
-        "Corn",
-      ],
       show: true,
     };
   },
-  async created() {
-    var resp = await fetch("https://programmingblogs.herokuapp.com/");
-    var a = resp.json();
-    console.log("&&&&&&&&&&&&&&&&&&&&&&&&");
-    console.log(a);
-  },
   methods: {
-    chngGlo() {
-      Vue.prototype.$actionButton = "approved";
-      console.log(this.$actionButton);
-    },
     onFileSelecte(event) {
       console.log(event.target.files[0]);
-    },
-    onSubmit() {
-      alert(this.form.name);
-    },
-    showFormData() {
-      alert(
-        this.signUp.username +
-          "\n" +
-          this.signUp.email +
-          "\n" +
-          this.signUp.gender +
-          "\n" +
-          this.signUp.hobbies
-      );
-      // console.warn(this.signUp)
     },
     createdUser() {
       if (
@@ -178,18 +131,7 @@ export default {
         }
       }
     },
-    creatCat() {
-      try {
-        axios
-          .post(
-            "https://programmingblogs.herokuapp.com/cat/category/",
-            this.cat
-          )
-          .then((response) => alert(response.data.id));
-      } catch (e) {
-        alert(e);
-      }
-    },
+   
   },
 };
 </script>

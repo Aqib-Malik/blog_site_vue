@@ -126,15 +126,7 @@ export default {
         showLoaderOnConfirm: true,
       }).then((result) => {
         if (result.value) {
-          //       var response =  fetch(
-          //   "https://programmingblogs.herokuapp.com/api/logout/",
-          //   {
-          //     method: "post",
-          //     headers: {
-          //       Authorization: `Token ${localStorage.getItem("token")}`,
-          //     },
-          //   }
-          // );
+         
           this.logg().then((result) => {
             if (result == 204) {
               localStorage.removeItem("token");

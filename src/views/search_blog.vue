@@ -51,8 +51,6 @@ export default {
   props: ["dat"],
   data() {
     return {
-      id:this.$route.params.id,
-      product: "About Page",
 
       isLoadShow: false,
       list: [],

@@ -42,9 +42,9 @@ export default {
     navbar,
   },
   props: ["data"],
-  mounted() {
-    this.data;
-  },
+  // mounted() {
+  //   this.data;
+  // },
 };
 </script>
 <style scoped>
